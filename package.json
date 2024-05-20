@@ -1,0 +1,19 @@
+{
+  "name": "decent-bookmarks",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy src/worker.ts",
+    "dev": "wrangler dev src/worker.ts",
+    "start": "wrangler dev src/worker.ts"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^1.12.8",
+    "@cloudflare/workers-types": "^4.20240512.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "typescript": "^5.4.5",
+    "wrangler": "^3.0.0"
+  }
+}
