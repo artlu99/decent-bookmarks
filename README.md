@@ -38,13 +38,15 @@ Works hand-in-hand with [[decent-bookmarks-cast-action](https://github.com/artlu
 	curl -X GET 'https://decent-bookmarks.artlu.xyz/?fid=391262' -H 'Authorization: Basic {secret}'
 	 ```
 
-- message [[@artlu99]](https://t.me/artlu99)] for credentials
+- message [@artlu99](https://t.me/artlu99) for credentials
     
-- show bookmarks in your FC client
+- show Decent Bookmarks in your FC client
 	-  [[live](https://client-bcbhshow.artlu.xyz)] example in Next/React, sorted by time-added-to-list [[code](https://github.com/artlu99/pinata-lite-client/blob/main/components/bookmarks.tsx)]
 
-- data availability is handled in *beta* by my "L4", i.e., a Cloudflare datastore. Next step is writing to Hub, L3, or L2.
-
+	-  in *beta*, all user-saved Decent Bookmarks are available to any client on the allowlist. Future development needed to allow users to opt-in to a more cumbersome flow, in order to further customize and segregate access to their data.
+ 
+ -    Basic mental model is a shared pool of data, with a privileged gatekeeper who can rotate keys in order to cut off future access. This invalidates current/future state, but does nothing with data that already was shared broadly. Not suitable for sharing sensitive, unencrypted information.
+  
 ---
 	
  ### A Cloudflare Worker endpoint with 3 methods:
@@ -56,3 +58,6 @@ Works hand-in-hand with [[decent-bookmarks-cast-action](https://github.com/artlu
 - DELETE - deletes a bookmark from the `unfiled` list
 
 study `types.ts`, run-time validation performed with `@cfworker/json-schema`
+
+Data Availability is handled in *beta* by my "L4", i.e., a Cloudflare datastore. Next step is writing to Hub, L3, or L2.
+
