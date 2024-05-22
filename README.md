@@ -15,7 +15,7 @@ Works hand-in-hand with [[decent-bookmarks-cast-action](https://github.com/artlu
 2. execute the Cast Action on the same cast to remove. Example video [[here](https://warpcast.com/artlu/0x7f2c3cb8)].
 3. view in a client that has enabled Decent Bookmarks:
    
-   - BCBHShow Lite Client [[WIP](https://client-bcbhshow.artlu.xyz)]
+   - BCBHShow Lite Client [[WIP live client](https://client-bcbhshow.artlu.xyz)] [[FOSS code](https://github.com/artlu99/pinata-lite-client/blob/main/components/bookmarks.tsx)]
    
 ## Technical HOWTO for Client devs
 
