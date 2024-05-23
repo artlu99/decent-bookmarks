@@ -61,10 +61,7 @@ export default {
 		const bookmarks: Bookmarks = decryptedJson ? JSON.parse(decryptedJson) : EMPTY_BOOKMARKS;
 
 		if (request.method === 'GET') {
-			return new Response(
-				canDecrypt ? JSON.stringify(bookmarks) : encryptedPacket.e ?? JSON.stringify(EMPTY_BOOKMARKS),
-				ALLOW_CORS_HEADERS
-			);
+			return new Response(canDecrypt ? JSON.stringify(bookmarks) : JSON.stringify(EMPTY_BOOKMARKS), ALLOW_CORS_HEADERS);
 		} else if (request.method === 'POST') {
 			if (authResponse) return authResponse;
 
@@ -77,11 +74,11 @@ export default {
 				}
 
 				const validatedBookmark: Bookmark = JSON.parse(reqBody);
-				if (bookmarks.unfiled.find((u) => u.hash === validatedBookmark.hash)) {
+				if (bookmarks.bookmarks.find((u) => u.hash === validatedBookmark.hash)) {
 					return new Response('Error', { ...KNOWN_RESPONSE, ...ALLOW_CORS_HEADERS });
 				} else {
 					const timestampedBookmark: TimestampedBookmark = { timestamp: Date.now(), ...validatedBookmark };
-					bookmarks.unfiled.push(timestampedBookmark);
+					bookmarks.bookmarks.push(timestampedBookmark);
 
 					const textToEncrypt = JSON.stringify(bookmarks);
 					const encryptedData = await encrypt(textToEncrypt, env.SECRET);
@@ -107,8 +104,8 @@ export default {
 				const validatedBookmarkToDelete: BookmarkToDelete = JSON.parse(reqBody);
 				console.log('validatedBookmarkHash:', validatedBookmarkToDelete);
 				console.log('bookmarks:', JSON.stringify(bookmarks));
-				if (bookmarks.unfiled.find((u) => u.hash === validatedBookmarkToDelete.hash)) {
-					bookmarks.unfiled = bookmarks.unfiled.filter((bm) => bm.hash !== validatedBookmarkToDelete.hash);
+				if (bookmarks.bookmarks.find((u) => u.hash === validatedBookmarkToDelete.hash)) {
+					bookmarks.bookmarks = bookmarks.bookmarks.filter((bm) => bm.hash !== validatedBookmarkToDelete.hash);
 
 					const textToEncrypt = JSON.stringify(bookmarks);
 					const encryptedData = await encrypt(textToEncrypt, env.SECRET);

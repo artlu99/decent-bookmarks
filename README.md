@@ -53,9 +53,9 @@ Works hand-in-hand with [[decent-bookmarks-cast-action](https://github.com/artlu
 
 - GET - retrieves the entire list of stored bookmarks, decrypting as necessary and as authorized
 
-- POST - adds a cast to the `unfiled` bookmarks list, adding a timestamp
+- POST - adds a cast to the bookmarks list, adding a timestamp
 
-- DELETE - deletes a bookmark from the `unfiled` list
+- DELETE - deletes a bookmark from the bookmarks list
 
 study `types.ts`, run-time validation performed with `@cfworker/json-schema`
 

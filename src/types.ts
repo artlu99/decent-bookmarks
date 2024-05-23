@@ -10,17 +10,18 @@ export interface Bookmark {
 	fid: string;
 	hash: `0x${string}`;
 	username: string;
+	tags?: string[];
 }
 export interface TimestampedBookmark extends Bookmark {
 	timestamp: number;
 }
 export interface Bookmarks {
-	unfiled: TimestampedBookmark[];
+	bookmarks: TimestampedBookmark[];
 }
 export interface BookmarkToDelete {
 	hash: `0x${string}`;
 }
-export const EMPTY_BOOKMARKS: Bookmarks = { unfiled: [] };
+export const EMPTY_BOOKMARKS: Bookmarks = { bookmarks: [] };
 
 export const PacketSchema: Schema = {
 	type: 'object',
