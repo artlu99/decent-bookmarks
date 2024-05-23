@@ -53,11 +53,7 @@ export default {
 
 		const encryptedPacket: Packet = jsonPacket ? JSON.parse(jsonPacket) : {};
 		const decryptedJson =
-			encryptedPacket.e && encryptedPacket.i
-				? await decrypt(encryptedPacket as EncryptedPacket, env.SECRET)
-				: encryptedPacket.p
-				? JSON.parse(encryptedPacket.p)
-				: undefined;
+			encryptedPacket.e && encryptedPacket.i ? await decrypt(encryptedPacket as EncryptedPacket, env.SECRET) : undefined;
 		const bookmarks: Bookmarks = decryptedJson ? JSON.parse(decryptedJson) : EMPTY_BOOKMARKS;
 
 		if (request.method === 'GET') {
