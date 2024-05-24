@@ -1,4 +1,4 @@
-name = "decent-bookmarks"
+name = "worker-misty-voice-905f"
 main = "src/worker.js"
 compatibility_date = "2024-05-15"
 workers_dev = true
